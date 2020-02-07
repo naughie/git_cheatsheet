@@ -1,0 +1,21 @@
+#!/bin/bash
+cat <<EOF
+# git のトレースから外したい
+$ git add foo
+$ git commit -m "Oops!"
+$ git rm --cached foo
+$ echo "foo" >>.gitignore
+$ git add .gitignore
+$ git commit -m "Remove foo"
+
+# git commit のメッセージを修正したい
+$ git commit -m "Wrong message"
+$ git commit --amend -m "Correct message"
+
+# git commit 後に stage したファイルを同じ commit にまとめたい
+$ git add foo
+$ git commit -m "Foo bar"
+$ echo >foo
+$ git add foo
+$ git commit --amend --noedit
+EOF
